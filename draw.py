@@ -3,8 +3,8 @@ import numpy as np
 from que import Queue
 Q=Queue()
 
-obj_l = np.array([39,26,0])
-obj_u = np.array([62,255,255])
+obj_l = np.array([0,0,0])
+obj_u = np.array([255,255,255])
 img=cv2.VideoCapture(0)
 while True:
     _, frame = img.read()
