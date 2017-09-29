@@ -15,8 +15,6 @@ while True:
     obj = cv2.inRange(hsv, lowerThresh, upperThresh)
     obj = cv2.erode(obj, None, iterations=erosion)
     obj = cv2.dilate(obj, None, iterations=dilation)
-    cv2.putText(bbj, 'Press enter to tune threshold values',
-                    (0,20), cv2.FONT_HERSHEY_PLAIN, 1.3, (255,0,0), 1)
     cv2.imshow("debug", obj)
     c_obj, _ = cv2.findContours(obj, 1, 2)
 
@@ -39,6 +37,8 @@ while True:
         cv2.putText(frame, str(int(x))+" "+str(int(y)),
                     (dX-10,dY-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (55,120,255), 2)
     
+    cv2.putText(frame, 'Press enter to tune threshold values',
+                    (0, h-5), cv2.FONT_HERSHEY_PLAIN, 1.3, (255,255,255), 1)
     cv2.imshow("cont",frame)
 
     key = cv2.waitKey(1) & 0xFF
@@ -46,7 +46,8 @@ while True:
         break
     elif key == 13:
         cv2.destroyAllWindows()
-        findThreshold(img)
+        [lowerThresh, upperThresh], [erosion, dilation] = findThreshold(img,
+                    [upperThresh, lowerThresh], erosion, dilation)
 
 img.release()
 cv2.destroyAllWindows()
