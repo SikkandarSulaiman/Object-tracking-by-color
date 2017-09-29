@@ -15,8 +15,6 @@ https://www.python.org/downloads/release/python-2711/
 Numpy
 -----------------
 Its a mandatory module required to use openCV. In the command line <br>
-pip install numpy <br>
+<i>$ pip install numpy</i> <br>
 will fetch numpy module
 
-See the video in Running codes directory
---------------
